@@ -30,7 +30,7 @@ if __name__ == '__main__':
         
         match pilihan_user:
             case 0: break
-            case 1: print('Read Data')
+            case 1: CRUD.read_data()
             case 2: print('Create Data') 
             case 3: print('Update Data') 
             case 4: print('Delete Data') 
