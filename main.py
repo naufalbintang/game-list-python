@@ -31,7 +31,7 @@ if __name__ == '__main__':
         match pilihan_user:
             case 0: break
             case 1: CRUD.read_data()
-            case 2: print('Create Data') 
+            case 2: CRUD.create_data() 
             case 3: print('Update Data') 
             case 4: print('Delete Data') 
             

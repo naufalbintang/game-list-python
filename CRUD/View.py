@@ -1,5 +1,12 @@
 from . import Operasi
 
+def create_data():
+    print('\n' + '=' * (len('silakan buat data baru') + 1))
+    print('Silakan buat data baru')
+    Operasi.create()
+    print('\nBerikut data baru anda')
+    read_data()
+
 def read_data():
     data_file = Operasi.read()
     index = 'No'
