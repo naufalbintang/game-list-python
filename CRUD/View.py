@@ -1,4 +1,21 @@
-from . import Operasi
+from . import Operasi, Input
+
+def update_data():
+    read_data()
+    
+    print('\nSilakan pilih nomor buku yang akan diupdate')
+    no_game = Input.input_no_game()
+    
+    print('\n' + '=' * 100)
+    print('Silakan pilih data yang akan diupdate')
+    list_pilihan = ['Judul', 'Publisher', 'Tahun']
+    for nomor, pilihan in enumerate(list_pilihan, 1):
+        print(f'{nomor}. {pilihan}')
+    banyak_pilihan = len(list_pilihan)
+    pilihan_user = Input.pilihan_user(1, banyak_pilihan)
+    
+    Operasi.update(no_game, pilihan_user)
+    
 
 def create_data():
     print('\n' + '=' * (len('silakan buat data baru') + 1))

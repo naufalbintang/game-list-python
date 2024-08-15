@@ -26,13 +26,13 @@ if __name__ == '__main__':
         for nomor, pilihan in enumerate(list_pilihan):
             print(f'{nomor}. {pilihan}')
         
-        pilihan_user: int = Input.pilihan_user(banyak_pilihan)
+        pilihan_user: int = Input.pilihan_user(0, banyak_pilihan)
         
         match pilihan_user:
             case 0: break
             case 1: CRUD.read_data()
             case 2: CRUD.create_data() 
-            case 3: print('Update Data') 
+            case 3: CRUD.update_data()
             case 4: print('Delete Data') 
             
         is_done: str = input('\nApakah ingin keluar (y/N)? ')

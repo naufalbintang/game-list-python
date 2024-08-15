@@ -1,6 +1,18 @@
 from . import Database, Input, Util
 import datetime
 
+def update(no_game, pilihan_user):
+    data_game = read(index=no_game)
+    print(data_game)
+    data_break = data_game.split(',')
+    pk = data_break[0]
+    date_add = data_break[1]
+    judul = data_break[2]
+    publisher = data_break[3]
+    tahun = data_break[4]
+    
+    
+
 def create():
     judul = Input.input_judul()
     publisher = Input.input_publisher()

@@ -1,11 +1,17 @@
-def pilihan_user(banyak_pilihan) -> int:
+def pilihan_user(min, banyak_pilihan) -> int:
     while True:
         try:
-            hasil = int(input('\nMasukkan pilihan: '))
-            if hasil > -1 and hasil < (banyak_pilihan):
-                break
-            else:
-                print('Tolong masukkan pilihan yang valid.')
+            hasil = int(input(f'\nMasukkan pilihan: '))
+            if min == 0:
+                if hasil > -1 and hasil < banyak_pilihan:
+                    break
+                else:
+                    print('Tolong masukkan pilihan yang valid.')
+            elif min == 1:
+                if hasil > 0 and hasil <= banyak_pilihan:
+                    break
+                else:
+                    print('Tolong masukkan pilihan yang valid.')
         except:
             print('Tolong masukkan angka.')
     return hasil
@@ -39,3 +45,12 @@ def input_tahun() -> int:
         except:
             print('Tahun tidak valid, silakan masukkan kembali.')
     return tahun
+
+def input_no_game():
+    while True:
+        try:
+            no_buku = int(input('Nomor buku: '))
+            break
+        except:
+            print('Gagal mengambil input nomor buku.')
+    return no_buku
