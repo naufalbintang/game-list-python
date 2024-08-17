@@ -1,15 +1,27 @@
 from . import Database, Input, Util
 import datetime
 
-def update(no_game, pilihan_user):
-    data_game = read(index=no_game)
-    print(data_game)
-    data_break = data_game.split(',')
-    pk = data_break[0]
-    date_add = data_break[1]
-    judul = data_break[2]
-    publisher = data_break[3]
-    tahun = data_break[4]
+
+    
+def update(no_game, pk, date_add, judul, publisher, tahun):
+    template_copy = Database.TEMPLATE.copy()
+    template_copy['pk'] = pk
+    template_copy['date_add'] = date_add
+    template_copy['judul'] = judul + Database.TEMPLATE['judul'][len(judul):]
+    template_copy['publisher'] = publisher + Database.TEMPLATE['publisher'][len(publisher):]
+    template_copy['tahun'] = str(tahun)
+    
+    data_str = f'{template_copy['pk']},{template_copy['date_add']},{template_copy['judul']},{template_copy['publisher']},{template_copy['tahun']}\n'
+
+    panjang_data = len(data_str)
+    
+    try:
+        with open(Database.DB_NAME, 'r+', encoding='utf-8') as file:
+            file.seek(panjang_data * (no_game - 1))
+            file.write(data_str)
+    except:
+        print('error dalam update data')
+    
     
     
 
@@ -21,9 +33,11 @@ def create():
     template_copy = Database.TEMPLATE.copy()
     template_copy['pk'] = Util.random_str(6)
     template_copy['date_add'] = datetime.datetime.now().replace(microsecond=0)
-    template_copy['judul'] = judul + ' ' * (255 - len(judul))
-    template_copy['publisher'] = publisher + ' ' * (255 - len(publisher))
-    template_copy['tahun'] = tahun
+    template_copy['judul'] = judul + Database.TEMPLATE['judul'][len(judul):]
+    template_copy['publisher'] = publisher + Database.TEMPLATE['publisher'][len(publisher):]
+    # template_copy['judul'] = judul + ' ' * (255 - len(judul))
+    # template_copy['publisher'] = publisher + ' ' * (255 - len(publisher))
+    template_copy['tahun'] = str(tahun)
     
     data_str = f'{template_copy['pk']},{template_copy['date_add']},{template_copy['judul']},{template_copy['publisher']},{template_copy['tahun']}\n'
     
@@ -60,8 +74,10 @@ def create_first_data():
     template_copy = Database.TEMPLATE.copy()
     template_copy['pk'] = Util.random_str(6)
     template_copy['date_add'] = datetime.datetime.now().replace(microsecond=0)
-    template_copy['judul'] = judul + ' ' * (255 - len(judul))
-    template_copy['publisher'] = publisher + ' ' * (255 - len(judul))
+    template_copy['judul'] = judul + Database.TEMPLATE['judul'][len(judul):]
+    template_copy['publisher'] = publisher + Database.TEMPLATE['publisher'][len(publisher):]
+    # template_copy['judul'] = judul + ' ' * (255 - len(judul))
+    # template_copy['publisher'] = publisher + ' ' * (255 - len(publisher))
     template_copy['tahun'] = str(tahun)
     
     data_str = f'{template_copy['pk']},{template_copy['date_add']},{template_copy['judul']},{template_copy['publisher']},{template_copy['tahun']}\n'

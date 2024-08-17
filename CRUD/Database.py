@@ -5,7 +5,7 @@ TEMPLATE: dict[str, str] = {
     'pk': 'xxxxxx',
     'date_add': 'dd-mm-yyyy',
     'judul': ' ' * 255,
-    'pubsliher': ' ' * 255,
+    'publisher': ' ' * 255,
     'tahun': 'yyyy'
 }
 

@@ -49,8 +49,8 @@ def input_tahun() -> int:
 def input_no_game():
     while True:
         try:
-            no_buku = int(input('Nomor buku: '))
+            no_buku = int(input('Nomor game: '))
             break
         except:
-            print('Gagal mengambil input nomor buku.')
+            print('Tolong masukkan angka.')
     return no_buku
